@@ -1,8 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ItemModule } from './item/item.module';
-import { Tab_Item } from './item/entity/item.entity';
-import { Tab_Type } from './type/entity/type.entity';
+import { UserModule } from './module/user.module';
+import { User } from './entity/user.entity';
+import { ReviewModule } from './module/review.module';
+import { Review } from './entity/review.entity';
+import { ImageModule } from './module/image.module';
+import { Image } from './entity/image.entity';
 
 @Module({
   imports: [
@@ -13,10 +16,12 @@ import { Tab_Type } from './type/entity/type.entity';
       username: 'nestjsadmin',
       password: 'nestjsadmin',
       database: 'nestjsdocker',
-      entities: [Tab_Item, Tab_Type],
+      entities: [User, Review, Image],
       synchronize: true,
     }),
-    ItemModule,
+    UserModule,
+    ReviewModule,
+    ImageModule,
   ],
 })
 export class AppModule {}
